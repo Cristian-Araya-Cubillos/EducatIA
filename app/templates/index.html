@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Chat</h1>
+    </div>
+    <div class="chat-container" style="height: calc(70vh - 150px); overflow-y: auto; margin-left: 20px; width: calc(80%);">
+        <div class="chat-box" id="chat-box" style="padding: 10px;">
+            <!-- Mensajes del chat -->
+            {% for message in historial %}
+            {% if message.role != 'system' %}
+                <div class="message {{ message.role }}">
+                    <div class="alert {{ 'alert-info' if message.role == 'user' else 'alert-light' }} rounded">
+                        {{ message.content | safe }}
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="input-box mt-3">
+        <input type="text" id="user-input" class="form-control" placeholder="Escribe tu mensaje...">
+        <button class="btn btn-primary mt-2" onclick="sendMessage()" id="sendButton">Enviar</button>
+    </div>
+</main>
+
+
+{% endblock %}

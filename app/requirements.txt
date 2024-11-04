@@ -1,0 +1,14 @@
+flask
+flask-cors
+requests
+openai
+Pillow
+langchain-community
+langchain
+pymongo
+bs4
+tiktoken
+gradio
+lxml
+argparse
+unstructured
